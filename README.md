@@ -1,5 +1,5 @@
 # PyTorch-AdaHAN
-An unofficial PyTorch implementation of the HAN and AdaHAN models presented in the ["Learning Visual Question Answering by Bootstrapping Hard Attention"](https://arxiv.org/pdf/1808.00300.pdf) research paper, by Mateusz Malinowski, Carl Doersch, Adam Santoro, and Peter Battaglia of DeepMind, London.
+An unofficial PyTorch implementation and discussion of the HAN and AdaHAN models presented in the ["Learning Visual Question Answering by Bootstrapping Hard Attention"](https://arxiv.org/pdf/1808.00300.pdf) research paper, by Mateusz Malinowski, Carl Doersch, Adam Santoro, and Peter Battaglia of DeepMind, London.
 
 ## Paper Overview
 
@@ -37,7 +37,6 @@ HAN, AdaHAN Model Diagram:
 The HAN and AdaHAN models utilize this finding by using the L2-norm as the region-selection mechanism. For the VQA task, this is done by encoding the input question to a dimension identical to the number of channels of the encoded input image. Then, the encoded question is broadcasted and summed with each feature vector of the encoded image. At this point, L2-activations are calculated at each spatial location. HAN requires an additional hyperparameter, *k*, which is how many of embedded positions to attend to (those unselected are zeroed out). AdaHAN instead utilizes the softmax function over the L2-activations (in a sense, making them compete against each other) and selecting the *adaptive* number of locations that surpass a certain threshold value. This allows for the model to vary the regions to attend to on a case by case basis.
 
 
-
 ## Experimentation Notes
 I wrote a program to synthetically generate very simple images of a barn scene, and questions and answers to pair with each image. Below are examples of the hard-attention mechanism applied to validation images over the course of my training sessions:
 
@@ -54,7 +53,7 @@ Training results:
 ![](https://github.com/gnouhp/PyTorch-AdaHAN/blob/master/repo_images/accuracy_plot.png)
 
 
-In hindsight, my synthetic datasets were way too simplistic and there isn't enough variance to prevent the models from learning the locations of the image that relevant more often than not across the entire dataset. I would love to run various experiments on much more complex datasets in the future, if I can get access to more computing resources.
+In hindsight, my synthetic datasets were way too simplistic and there isn't enough variance to prevent the models from simply memorizing the locations of the image that were relevant more often than not across the entire dataset, instead of on a per-image basis. I would love to run various experiments on much more complex datasets in the future, if I can get access to more computing resources.
 
 **My thoughts and questions on the topic:**
 
