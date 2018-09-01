@@ -67,6 +67,8 @@ In hindsight, my synthetic datasets were way too simplistic and there isn't enou
 4. I am not 100 percent convinced that the AdaHAN softmax on the presence vector is sufficient to lower the number of attended regions, or that the weights tied to embedded locations are "competing" against each other in some sort of zero-sum game to get the highest L2-norms. How can we be sure that the softmax operation, which is conditioned on the loss from the answer, doesn't learn to select embedded positions that correspond to a maximal area of the input image?
 
 
-**Citations**
+## Citations
+
 ["Learning Visual Question Answering by Bootstrapping Hard Attention"](https://arxiv.org/pdf/1808.00300.pdf), by Mateusz Malinowski, Carl Doersch, Adam Santoro, and Peter Battaglia of DeepMind, London.
+
 [The Building Blocks of Interpretability](https://distill.pub/2018/building-blocks/), by Olah, et al., "The Building Blocks of Interpretability", Distill, 2018.
