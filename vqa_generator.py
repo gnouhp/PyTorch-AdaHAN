@@ -47,7 +47,6 @@ class VQAGenerator():
         self.img.paste(self.animals2imgs[animal_idx], (self.barn_pos + randint(-30, 60), 35), mask=self.animals2imgs[animal_idx])
         self.questions.append("What animal is on top of the roof of the barn?")
         self.answers.append(self.animals[animal_idx])
-
         
         self.img.paste(self.hay, (self.hay_pos, 125), mask=self.hay)
         animal_idx = randint(len(self.animals))
@@ -80,9 +79,9 @@ class VQAGenerator():
 def vqa_data(n_samples):
     starttime = time.time()
     animals = ["chicken", "sheep", "cow", "pig"]
-    animals2imgs = [Image.open("{}.png".format(animal)).resize((75, 75)) for animal in animals]
-    barn_img = Image.open("barn.png").resize((150, 150))
-    hay_img = Image.open("hay.png").resize((80, 100))
+    animals2imgs = [Image.open("base_images/{}.png".format(animal)).resize((75, 75)) for animal in animals]
+    barn_img = Image.open("base_images/barn.png").resize((150, 150))
+    hay_img = Image.open("base_images/hay.png").resize((80, 100))
     img_dim = 256
 
     # make directories
