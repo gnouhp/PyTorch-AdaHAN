@@ -73,9 +73,6 @@ class VQAGenerator():
         self.sample_idx += 1
         self.clear_img()
 
-
-
-    
 def vqa_data(n_samples):
     starttime = time.time()
     animals = ["chicken", "sheep", "cow", "pig"]
